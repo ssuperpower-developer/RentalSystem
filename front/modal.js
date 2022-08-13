@@ -61,10 +61,10 @@ function toModal(row){
         }
 
 function renderTable(id, serverDataList){
-    var size = serverDataList.length;
-    var trList = '';
-    var modalList = '';
-    for(var i=0; i<size; i++) {
+    let size = serverDataList.length;
+    let trList = '';
+    let modalList = '';
+    for(let i=0; i<size; i++) {
         trList += toDOM(serverDataList[i]);
         modalList += toModal(serverDataList[i]);
     }
@@ -81,6 +81,18 @@ window.onload = function () {
     const reserveBtn2 = document.getElementById("reserveBtn2");
     const reserveBtn3 = document.getElementById("reserveBtn3");
 
+    let reservedList = [];
+
+    function saveReserve(){
+        localStorage.setItem("reserve", JSON.stringify(reservedList));
+    }
+
+    function deleteReserve(event){
+        const li = event.target.parentElement;
+        li.remove();
+        reservedList = reservedList.filter((reserve) => reserve !== parseInt(li));
+        saveReserve();
+    }
 
     const date = new Date();
     let reserveDay1 = 0;
@@ -89,18 +101,24 @@ window.onload = function () {
         reserveBtn1.style.backgroundColor = "#e0e0e0";
         reserveBtn1.innerText = "예약대기중"
         returnDay1 = date.getDay() + 7;
+        reservedList.push("1");
+        saveReserve();
     }
 
     function handleAgree2(){
         reserveBtn2.style.backgroundColor = "#e0e0e0";
         reserveBtn2.innerText = "예약대기중"
         returnDay1 = date.getDay() + 7;
+        reservedList.push("2");
+        saveReserve();
     }
 
     function handleAgree3(){
         reserveBtn3.style.backgroundColor = "#e0e0e0";
         reserveBtn3.innerText = "예약대기중"
         returnDay1 = date.getDay() + 7;
+        reservedList.push("3");
+        saveReserve();
     }
 
     function handleReturn(){
