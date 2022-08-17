@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>retalStatus</title>
+    <script
+      src="https://kit.fontawesome.com/cdbf6fefef.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <header>
+      <div class="notifications">
+        <button type="button">
+          <i class="fa-solid fa-bell"></i>
+        </button>
+      </div>
+      <div class="myPage">
+        <button type="button">
+          <i class="fa-solid fa-user"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="myList">
+      <p id="listTitle">My_List</p>
+      <p id="today">0000.00.00</p>
+    </div>
+
+    <table class="table table-hover" id="table">
+      <thead>
+        <tr style="background-color: #d9d9d9">
+          <th scope="col">물품</th>
+          <th id="rowList" scope="col">수량</th>
+          <th id="rowList" scope="col">남은 날짜</th>
+          <th id="rowList" scope="col">대여상태</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div id="modalDiv"></div>
+
+    <div
+      class="modal fade"
+      id="returnModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalLabel">Return</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="modal-return"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#sendMessageModal"
+              data-bs-whatever="@mdo"
+              style="background-color: #68cdc1"
+            >
+              YES
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              NO
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  <script src="rentalStatus.js"></script>
+</html>
