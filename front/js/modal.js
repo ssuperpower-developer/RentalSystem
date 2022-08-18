@@ -170,13 +170,23 @@ window.onload = function () {
 
           confirmationDate${row.no}.addEventListener("click", handleAgree${row.no});
 
-          $(function () {
-            $("#borrowDate${row.no}").datepicker();
-          });
-        
-          $(function () {
-            $("#returnDate${row.no}").datepicker();
-          });
+
+          $("#borrowDate${row.no}").datepicker({
+            minDate: 0,
+            onClose: function(selectedDate){
+              $("#returnDate${row.no}").datepicker("option", "minDate", selectedDate);
+              
+              let date = $(this).datepicker('getDate');
+              date.setDate(date.getDate() + 3);
+              $("#returnDate${row.no}").datepicker("option", "maxDate", date);
+            }
+          })
+
+          $("#returnDate${row.no}").datepicker({
+            onClose: function(selectedDate){
+              $("#borrowDate${row.no}").datepicker("option", "maxDate", selectedDate);
+            }
+          })
     `;
   }
 
